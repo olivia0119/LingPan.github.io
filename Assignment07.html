@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Assignment07.css">
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="#home" class="active" onclick="clearInfoDisplay()">Home</a>
+        
+        <div class="dropdown">
+            <button class="dropbtn">Course 
+                <i class="fa fa-caret-down"></i>
+            </button>
+          <div class="dropdown-content">
+            <a href="https://gaia.cs.umass.edu/kurose_ross/eighth.php ">Computer Networking:A Top-Down Approach</a>
+            <a href="http://w3schools.com">W3 Schools Homepage</a>
+            <a href=" https://www.geeksforgeeks.org/web-development/">Geeks for Geeks</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Browser  
+                <i class="fa fa-caret-down"></i>
+            </button>
+          <div class="dropdown-content">
+            <a href="#" onclick="showNavigatorInfo()">Navigator</a>
+            <a href="#" onclick="showWindowInfo()">Window</a>
+            <a href="#" onclick="showScreenInfo()">Screen</a>
+            <a href="#" onclick="showLocationInfo()">Location</a>
+            <a href="#" onclick="showGeolocationInfo()">Geolocation</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">About 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div>
+                    <a href="Developer.html">Developer</a>
+                </div>
+                <a href="Contact_Me.html">Contact Me</a>
+            </div>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    
+        </div>
+    </div> 
+
+
+      
+    <div>
+        <img src="background.jpg" alt="CSCI355">
+    </div>
+    
+    <div id="infoDisplay" style="padding-left:16px">
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+        }
+    }
+
+    function clearInfoDisplay() {
+            document.getElementById("infoDisplay").style.display = "none";
+        }
+
+    function showNavigatorInfo() {
+        document.getElementById("infoDisplay").style.display = "block";
+        document.getElementById("infoDisplay").innerHTML =
+                "Navigator Info: <br>" +
+                "appName: " + navigator.appName + "<br>" +
+                "product: " + navigator.product + "<br>" +
+                "appVersion: " + navigator.appVersion + "<br>" +
+                "userAgent: " + navigator.userAgent + "<br>" +
+                "platform: " + navigator.platform + "<br>" +
+                "language: " + navigator.language + "<br>";
+        }
+
+    function showWindowInfo() {
+        document.getElementById("infoDisplay").style.display = "block";
+        document.getElementById("infoDisplay").innerHTML =
+                "Window Info: <br>" +
+                "innerHeight: " + window.innerHeight + "px<br>" +
+                "innerWidth: " + window.innerWidth + "px<br>";
+    }
+
+    function showScreenInfo() {
+        document.getElementById("infoDisplay").style.display = "block";
+        var screenInfo = window.screen;
+        document.getElementById("infoDisplay").innerHTML =
+                "Screen Info: <br>" +
+                "width: " + screenInfo.width + "px<br>" +
+                "height: " + screenInfo.height + "px<br>" +
+                "availWidth: " + screenInfo.availWidth + "px<br>" +
+                "availHeight: " + screenInfo.availHeight + "px<br>" +
+                "colorDepth: " + screenInfo.colorDepth + "<br>" +
+                "pixelDepth: " + screenInfo.pixelDepth + "<br>";
+    }
+
+    function showLocationInfo() {
+        document.getElementById("infoDisplay").style.display = "block";
+        document.getElementById("infoDisplay").innerHTML =
+                "Location Info: <br>" +
+                "href: " + window.location.href + "<br>" +
+                "hostname: " + window.location.hostname + "<br>" +
+                "pathname: " + window.location.pathname + "<br>" +
+                "protocol: " + window.location.protocol + "<br>";
+    }
+
+    function showGeolocationInfo() {
+        document.getElementById("infoDisplay").style.display = "block";
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                document.getElementById("infoDisplay").innerHTML =
+                    "Geolocation Info: <br>" +
+                    "Latitude: " + position.coords.latitude + "<br>" +
+                    "Longitude: " + position.coords.longitude + "<br>";
+            });
+        } else {
+            document.getElementById("infoDisplay").innerHTML =
+                "Geolocation is not supported by this browser.";
+        }
+    }
+
+    </script>
+
+</html>
